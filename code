@@ -1,0 +1,30 @@
+import seaborn as sns
+import pandas as pd
+df=sns.load_dataset("iris")
+df
+df.head()
+df.info()
+df.species.value_counts()
+df.shape
+from sklearn.preprocessing import LabelEncoder
+le=LabelEncoder()
+x=df.iloc[:,:-1]
+x
+y=df.iloc[:,-1]
+y
+y=le.fit_transform(y)
+y
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=3)
+from sklearn.neighbors import KNeighborsClassifier
+knn=KNeighborsClassifier()
+knn.fit(x_train,y_train)
+y_pred=knn.predict(x_test)
+y_predy_test
+from sklearn import metrics
+accuracy=metrics.accuracy_score(y_test,y_pred)
+accuracy
+test_pred=knn.predict([[4.5,2.3,4.9,2.4]])
+test_pred
+categories={0:"setosa",1:"versicolor",2:"virginica"}
+categories[test_pred[0]]
